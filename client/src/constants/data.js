@@ -16,8 +16,8 @@ export const steps = [
       description: `Once the wifi has been connected successfully and is stable, setup your Tablet by following the instructions shown on the screen.`,
     },
     {
-      label: 'Consumer App and Lock Test App Download',
-      description: `You will see the Consumer App and Lock Test App being downloaded on your Tablet and the Consumer App will be pinned.`,
+      label: 'Tablet Ambassador app download',
+      description: `You will see the Tablet Ambassador app being downloaded on your Tablet and the Consumer App will be pinned.`,
     },
     {
       label: 'Ready for Deployment',
