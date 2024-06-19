@@ -22,20 +22,25 @@ ssh.connect({
   host: hostname,
   username: username,
   privateKeyPath: keyPath,
+}).then(() => {
+  console.log("SSH Connection Successful");
+}).catch((err) => {
+  console.log("Error : ", err);
 });
 
 function runScript(filename, callback) {
   let scriptPath;
   if (filename === 'UnlockScript') {
-    scriptPath = '/home/vanshaj_arora_sg/PinUS.py';
+    scriptPath = 'PinUK.py';
   } else if (filename === 'morningSetup') {
-    scriptPath = '/home/vanshaj_arora_sg/UnpinUS.py';
+    scriptPath = 'UnpinUK.py';
   } else {
-    scriptPath = '/home/vanshaj_arora_sg/testlit.py';
+    scriptPath = 'testlit.py';
   }
 
-  ssh.execCommand(`python3 ${scriptPath}`)
+  ssh.execCommand(`cd /home/vanshaj_arora_sg/ && python3 ${scriptPath}`)
     .then((result) => {
+      // console.log(result);
       callback(null, result.stdout);
     })
     .catch((err) => {
@@ -55,6 +60,7 @@ app.get('/api/script/:scriptname', (req, res) => {
       res.send('Error occurred while executing script.');
       return;
     }
+    console.log(output);
     res.send(output.split('\n')[3]);
   });
 });

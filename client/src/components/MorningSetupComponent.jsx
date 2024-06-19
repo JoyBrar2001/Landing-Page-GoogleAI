@@ -8,6 +8,7 @@ const MorningSetupComponent = () => {
 
   const morningUrl = useSelector((state) => state.morningSetup.morningUrl);
   const morningLoading = useSelector((state) => state.morningSetup.morningLoading);
+  console.log(morningUrl);
 
   return (
     <div>
